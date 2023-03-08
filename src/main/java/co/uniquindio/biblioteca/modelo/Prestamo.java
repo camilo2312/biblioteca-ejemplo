@@ -1,11 +1,11 @@
 package co.uniquindio.biblioteca.modelo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -13,12 +13,14 @@ import java.sql.Date;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Prestamo {
+public class Prestamo implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    private Date fechaCreacion;
-    private Date fechaDevolucion;
+    @Column(nullable = false)
+    private LocalDate fechaCreacion;
+    @Column(nullable = false)
+    private LocalDate fechaDevolucion;
 }

@@ -4,8 +4,9 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 
 public enum Genero {
-    Aventura,
-    Terror,
-    Comedia,
-    Accion
+    AVENTURA,
+    TERROR,
+    COMEDIA,
+    ACCION,
+    CIENCIA_FICCION
 }
