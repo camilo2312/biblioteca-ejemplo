@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,6 +17,7 @@ public class Libro implements Serializable {
 
     @Id
     @EqualsAndHashCode.Include
+    @Column(length = 10)
     private String isbn;
     @Column(length = 100, nullable = false)
     private String nombre;
@@ -24,5 +26,12 @@ public class Libro implements Serializable {
     @Column(nullable = false)
     private int anio;
     @Enumerated(EnumType.STRING)
-    private Genero genero;
+    @ElementCollection
+    @Column(length = 50, nullable = false)
+    private List<Genero> genero;
+
+    @ManyToMany
+    private List<Autor> autores;
+    @OneToMany(mappedBy = "libro")
+    private List<PrestamoLibro> prestamoLibro;
 }

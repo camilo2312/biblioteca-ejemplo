@@ -6,6 +6,7 @@ import lombok.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -23,4 +24,9 @@ public class Prestamo implements Serializable {
     private LocalDate fechaCreacion;
     @Column(nullable = false)
     private LocalDate fechaDevolucion;
+    @ManyToOne
+    private Persona persona;
+
+    @OneToMany(mappedBy = "prestamo")
+    private List<PrestamoLibro> prestamoLibro;
 }

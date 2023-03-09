@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,4 +20,7 @@ public class Ciudad implements Serializable {
     private int codigo;
     @Column(length = 100, nullable = false)
     private String nombre;
+
+    @OneToMany(mappedBy = "ciudad")
+    private List<Persona> persona;
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,4 +19,6 @@ public class Autor implements Serializable {
     private int codigo;
     @Column(length = 100, nullable = false)
     private String nombre;
+    @ManyToMany(mappedBy = "autores")
+    private List<Libro> libros;
 }

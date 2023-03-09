@@ -1,9 +1,6 @@
 package co.uniquindio.biblioteca.modelo;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -27,4 +24,8 @@ public class Persona implements Serializable {
     private String email;
     @ElementCollection
     private List<String> telefono;
+    @ManyToOne
+    private Ciudad ciudad;
+    @OneToMany(mappedBy = "persona")
+    private List<Prestamo> prestamos;
 }
